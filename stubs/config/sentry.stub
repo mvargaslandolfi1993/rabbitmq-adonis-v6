@@ -12,6 +12,7 @@ import { defineConfig } from 'rabbitmq-adonis-v6'
 |--------------------------------------------------------------------------
 |
 */
+
 const rabbitmqConfig = defineConfig({
   hostname: Env.get('RABBITMQ_HOSTNAME', 'localhost') as string,
   user: Env.get('RABBITMQ_USER') as string,

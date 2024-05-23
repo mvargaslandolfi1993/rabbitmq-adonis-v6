@@ -12,6 +12,7 @@ async function listen() {
     })
 }
 
+
 listen().catch((_e) => {
   console.log('Cannot connect to Rabbitmq')
 })
