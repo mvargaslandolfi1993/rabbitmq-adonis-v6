@@ -15,6 +15,7 @@ Then:
 ```
 node ace configure rabbitmq-adonis-v6
 ```
+
 This is will create `start/rabbit.ts`.
 
 This will create `config/rabbit.ts` and add the following fields to your `.env`:
