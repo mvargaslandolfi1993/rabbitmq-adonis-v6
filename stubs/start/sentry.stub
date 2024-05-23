@@ -1,0 +1,17 @@
+{{{
+  exports({ to: app.startPath('rabbitmq.ts') })
+}}}
+
+import rabbitmq from 'rabbitmq-adonis-v6'
+
+async function listen() {
+    await Rabbit.assertQueue('my_queue')
+
+    await Rabbit.consumeFrom('my_queue', (message) => {
+        console.log(message.content)
+    })
+}
+
+listen().catch((_e) => {
+  console.log('Cannot connect to Rabbitmq')
+})

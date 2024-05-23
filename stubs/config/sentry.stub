@@ -1,0 +1,24 @@
+{{{
+  exports({ to: app.configPath('sentry.ts') })
+}}}
+
+import env from '#start/env'
+import { Rabbitmq } from 'rabbitmq-adonis-v6'
+import { defineConfig } from 'rabbitmq-adonis-v6'
+
+/*
+|--------------------------------------------------------------------------
+| Rabbitmq config
+|--------------------------------------------------------------------------
+|
+*/
+const rabbitmqConfig = defineConfig({
+  hostname: Env.get('RABBITMQ_HOSTNAME', 'localhost') as string,
+  user: Env.get('RABBITMQ_USER') as string,
+  password: Env.get('RABBITMQ_PASSWORD') as string,
+  port: Number(Env.get('RABBITMQ_PORT')),
+  protocol: Env.get('RABBITMQ_PROTOCOL'),
+  heartbeat: Env.get('RABBITMQ_HEARTBEAT, 60) as number
+})
+
+export default rabbitmqConfig

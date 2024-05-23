@@ -1,0 +1,12 @@
+{
+  "include": ["**/*"],
+  "exclude": ["node_modules", "build"],
+  "extends": "@adonisjs/tsconfig/tsconfig.package.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "outDir": "build",
+    "rootDir": "./",
+    "sourceMap": true,
+    "declaration": true
+  }
+}

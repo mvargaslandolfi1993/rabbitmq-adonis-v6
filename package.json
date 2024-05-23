@@ -1,0 +1,68 @@
+{
+  "name": "rabbitmq-adonis-v6",
+  "version": "1.0.0",
+  "description": "AdonisJS RabbitMQ provider",
+  "main": "build/index.js",
+  "engines": {
+    "node": ">=21.0.0"
+  },
+  "type": "module",
+  "files": [
+    "build"
+  ],
+  "exports": {
+    ".": "./build/index.js",
+    "./types": "./build/src/types.js",
+    "./commands": "./build/commands/main.js",
+    "./services/main": "./build/services/main.js",
+    "./rabbitmq_provider": "./build/providers/sentry_provider.js"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/mvargaslandolfi1993/rabbitmq-adonis-v6.git#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mvargaslandolfi1993/rabbitmq-adonis-v6.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mvargaslandolfi1993/rabbitmq-adonis-v6.git/issues"
+  },
+  "keywords": [
+    "adonis",
+    "rabbitmq"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run build-only && npm run copyfiles",
+    "copyfiles": "copyfiles \"stubs/**/*.stub\" build",
+    "build-only": "tsc && npm run index:commands",
+    "clean": "rimraf build",
+    "prepublishOnly": "npm run build",
+    "index:commands": "adonis-kit index build/commands",
+    "format": "prettier --write ."
+  },
+  "author": "Miguel Vargas",
+  "prettier": {
+    "trailingComma": "es5",
+    "semi": false,
+    "singleQuote": true,
+    "useTabs": false,
+    "quoteProps": "consistent",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "printWidth": 100
+  },
+  "devDependencies": {
+    "@adonisjs/core": "^6.9.0",
+    "@adonisjs/tsconfig": "^1.3.0",
+    "copyfiles": "^2.4.1",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.6",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@types/amqplib": "^0.10.5",
+    "amqplib": "^0.10.4",
+    "fast-safe-stringify": "^2.1.1"
+  }
+}

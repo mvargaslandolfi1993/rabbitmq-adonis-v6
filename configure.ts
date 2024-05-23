@@ -1,0 +1,51 @@
+import ConfigureCommand from '@adonisjs/core/commands/configure'
+import { stubsRoot } from './stubs/main.js'
+
+/**
+ * Configures the package
+ */
+export async function configure(command: ConfigureCommand) {
+  const codemods = await command.createCodemods()
+
+  /**
+   * Publish config file
+   */
+  await codemods.makeUsingStub(stubsRoot, 'config/rabbitmq.stub', {})
+
+  await codemods.makeUsingStub(stubsRoot, 'start/rabbitmq.stub', {})
+
+  /**
+   * Publish provider and command
+   */
+  await codemods.updateRcFile((rcFile: any) => {
+    rcFile.addProvider('rabbitmq-adonis-v6/rabbitmq_provider')
+    rcFile.addPreloadFile('#start/rabbit', ['console'])
+  })
+
+  /**
+   * Define env variables
+   */
+  await codemods.defineEnvVariables({
+    RABBITMQ_HOSTNAME: 'localhost',
+    RABBITMQ_USER: '',
+    RABBITMQ_PASSWORD: '',
+    RABBITMQ_PORT: '',
+    RABIITMQ_PROTOCOL: 'ampq',
+    RABBITMQ_HEARTBEAT: 60,
+  })
+
+  /**
+   * Define env variables validation
+   */
+  await codemods.defineEnvValidations({
+    variables: {
+      RABBITMQ_HOSTNAME: 'Env.schema.string()',
+      RABBITMQ_USER: 'Env.schema.string()',
+      RABBITMQ_PASSWORD: 'Env.schema.string()',
+      RABBITMQ_PORT: 'Env.schema.number()',
+      RABIITMQ_PROTOCOL: 'Env.schema.string()',
+      RABBITMQ_HEARTBEAT: 'Env.schema.number()',
+    },
+    leadingComment: 'Variables for rabbitmq-adonis-v6',
+  })
+}
