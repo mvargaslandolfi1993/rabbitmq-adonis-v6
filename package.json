@@ -15,7 +15,7 @@
     "./types": "./build/src/types.js",
     "./commands": "./build/commands/main.js",
     "./services/main": "./build/services/main.js",
-    "./rabbitmq_provider": "./build/providers/sentry_provider.js"
+    "./rabbitmq_provider": "./build/providers/rabbitmq_provider.js"
   },
   "license": "MIT",
   "homepage": "https://github.com/mvargaslandolfi1993/rabbitmq-adonis-v6.git#readme",

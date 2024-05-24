@@ -10,9 +10,9 @@ export async function configure(command: ConfigureCommand) {
   /**
    * Publish config file
    */
-  await codemods.makeUsingStub(stubsRoot, 'config/rabbitmq.stub', {})
+  await codemods.makeUsingStub(stubsRoot, 'config/rabbit.stub', {})
 
-  await codemods.makeUsingStub(stubsRoot, 'start/rabbitmq.stub', {})
+  await codemods.makeUsingStub(stubsRoot, 'start/rabbit.stub', {})
 
   /**
    * Publish provider and command
@@ -44,8 +44,8 @@ export async function configure(command: ConfigureCommand) {
       RABBITMQ_PASSWORD: 'Env.schema.string()',
       RABBITMQ_PORT: 'Env.schema.number()',
       RABIITMQ_PROTOCOL: 'Env.schema.string()',
-      RABBITMQ_HEARTBEAT: 'Env.schema.number()',
+      RABBITMQ_HEARTBEAT: 'Env.schema.number.optional()',
     },
-    leadingComment: 'Variables for rabbitmq-adonis-v6',
+    leadingComment: 'Variables for Rabbitmq',
   })
 }

@@ -1,10 +1,10 @@
 import app from '@adonisjs/core/services/app'
 import { RabbitManagerContract } from '../src/types.js'
 
-let rabbitmq: RabbitManagerContract
+let rabbit: RabbitManagerContract
 
 await app.booted(async () => {
-  rabbitmq = await app.container.make('rabbitmq')
+  rabbit = await app.container.make('rabbit')
 })
 
-export { rabbitmq as default }
+export { rabbit as Rabbit }

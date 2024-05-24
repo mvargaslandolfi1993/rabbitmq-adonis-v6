@@ -5,7 +5,7 @@ import { RabbitConfig, RabbitManagerContract } from '../src/types.js'
 
 declare module '@adonisjs/core/types' {
   export interface ContainerBindings {
-    rabbitmq: RabbitManagerContract
+    rabbit: RabbitManagerContract
   }
 }
 
@@ -13,10 +13,10 @@ export default class RabbitMQProvider {
   constructor(protected app: ApplicationService) {}
 
   async register() {
-    this.app.container.singleton('rabbitmq', async (resolver) => {
+    this.app.container.singleton('rabbit', async (resolver) => {
       const configService = await resolver.make('config')
 
-      const config = configService.get<RabbitConfig>('rabbitmq')
+      const config = configService.get<RabbitConfig>('rabbit')
 
       if (!config) {
         throw new RuntimeException(
@@ -26,12 +26,10 @@ export default class RabbitMQProvider {
 
       return new RabbitManager({ ...config })
     })
-
-    this.app.container.make('rabbitmq')
   }
 
   public async shutdown() {
-    const Rabbit: RabbitManagerContract = await this.app.container.make('rabbitmq')
+    const Rabbit: RabbitManagerContract = await this.app.container.make('rabbit')
     await Rabbit.closeChannel()
     await Rabbit.closeConnection()
   }
