@@ -1,5 +1,5 @@
 {{{
-  exports({ to: app.startPath('rabbitmq.ts') })
+  exports({ to: app.startPath('rabbit.ts') })
 }}}
 
 import rabbitmq from 'rabbitmq-adonis-v6'

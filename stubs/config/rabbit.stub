@@ -1,5 +1,5 @@
 {{{
-  exports({ to: app.configPath('sentry.ts') })
+  exports({ to: app.configPath('rabbit.ts') })
 }}}
 
 import { defineConfig } from 'rabbitmq-adonis-v6'
