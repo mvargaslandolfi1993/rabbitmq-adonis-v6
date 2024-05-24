@@ -1,6 +1,6 @@
 # adonis-rabbit
 
-`rabbitmq-adonis-v6` is a RabbitMQ provider for [Adonis](https://github.com/adonisjs/core).
+`rabbitmq-adonis-v6` is a RabbitMQ provider for [Adonis](https://adonisjs.com/).
 
 ## Getting Started
 
@@ -35,7 +35,7 @@ Make sure to set the correct values to the enviroment variables so `rabbitmq-ado
 ### Sending messages to an queue
 
 ```ts
-import Rabbit from 'rabbitmq-adonis-v6'
+import { Rabbit } from 'rabbitmq-adonis-v6'
 import router from '@adonisjs/core/services/router'
 
 Route.get('/', async () => {
@@ -56,7 +56,7 @@ Notice doesn't really makes sense to subscribe to an queue inside a controller, 
 Inside `start/rabbit.ts`:
 
 ```ts
-import Rabbit from 'rabbitmq-adonis-v6'
+import { Rabbit } from 'rabbitmq-adonis-v6'
 
 async function listen() {
   await Rabbit.assertQueue('my_queue')
@@ -78,7 +78,7 @@ This will log every message sent to my queue `my_queue`.
 #### Import
 
 ```ts
-import Rabbit from 'rabbitmq-adonis-v6'
+import { Rabbit } from 'rabbitmq-adonis-v6'
 ```
 
 #### `assertQueue()`
@@ -214,6 +214,14 @@ Retrieves the amqplib's Channel instance. If there's not a connection, it'll be 
 await Rabbit.getChannel()
 ```
 
+#### `validateConnection()`
+
+Indicate if has an active connection
+
+```ts
+await Rabbit.validateConnection()
+```
+
 #### `closeChannel()`
 
 Closes the channel.
@@ -226,7 +234,7 @@ Closes the connection.
 
 ### Message
 
-When consuming messages through [`consumeFrom`](https://github.com/jotaajunior/adonis-rabbit#consumefrom), you'll receive in the callback a Message instance.
+When consuming messages through [`consumeFrom`](https://github.com/mvargaslandolfi/rabbitmq-adonis-v6#consumefrom), you'll receive in the callback a Message instance.
 
 This slightly different from amqplib approach. For example:
 
@@ -318,3 +326,7 @@ Parameters:
 In your .env you have to put the service container name, for example:
 
 `RABBITMQ_HOSTNAME={your_docker_container_service_name}`
+
+## Credits
+
+Part of the code for this package has been taken and adapted from the RabbitMQ package for Adonis v5. You can find the original package [here](https://github.com/jotaajunior/adonis-rabbit).

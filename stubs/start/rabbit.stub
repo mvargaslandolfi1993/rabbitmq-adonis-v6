@@ -2,7 +2,7 @@
   exports({ to: app.startPath('rabbit.ts') })
 }}}
 
-import rabbitmq from 'rabbitmq-adonis-v6'
+import { Rabbit } from 'rabbitmq-adonis-v6'
 
 async function listen() {
     await Rabbit.assertQueue('my_queue')

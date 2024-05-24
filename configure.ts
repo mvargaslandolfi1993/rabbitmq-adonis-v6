@@ -19,7 +19,7 @@ export async function configure(command: ConfigureCommand) {
    */
   await codemods.updateRcFile((rcFile: any) => {
     rcFile.addProvider('rabbitmq-adonis-v6/rabbitmq_provider')
-    rcFile.addPreloadFile('#start/rabbit', ['console'])
+    rcFile.addPreloadFile('#start/rabbit', ['web'])
   })
 
   /**
@@ -30,7 +30,7 @@ export async function configure(command: ConfigureCommand) {
     RABBITMQ_USER: '',
     RABBITMQ_PASSWORD: '',
     RABBITMQ_PORT: '',
-    RABIITMQ_PROTOCOL: 'ampq',
+    RABBITMQ_PROTOCOL: 'ampq',
     RABBITMQ_HEARTBEAT: 60,
   })
 
@@ -43,7 +43,7 @@ export async function configure(command: ConfigureCommand) {
       RABBITMQ_USER: 'Env.schema.string()',
       RABBITMQ_PASSWORD: 'Env.schema.string()',
       RABBITMQ_PORT: 'Env.schema.number()',
-      RABIITMQ_PROTOCOL: 'Env.schema.string()',
+      RABBITMQ_PROTOCOL: 'Env.schema.string()',
       RABBITMQ_HEARTBEAT: 'Env.schema.number.optional()',
     },
     leadingComment: 'Variables for Rabbitmq',
