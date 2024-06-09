@@ -1,10 +1,10 @@
 {
   "name": "rabbitmq-adonis-v6",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "AdonisJS RabbitMQ provider",
   "main": "build/index.js",
   "engines": {
-    "node": ">=21.0.0"
+    "node": ">=20.6"
   },
   "type": "module",
   "files": [
