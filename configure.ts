@@ -43,7 +43,7 @@ export async function configure(command: ConfigureCommand) {
       RABBITMQ_USER: 'Env.schema.string()',
       RABBITMQ_PASSWORD: 'Env.schema.string()',
       RABBITMQ_PORT: 'Env.schema.number()',
-      RABBITMQ_PROTOCOL: 'Env.schema.string()',
+      RABBITMQ_PROTOCOL: 'Env.schema.enum("amqp", "amqps")',
       RABBITMQ_HEARTBEAT: 'Env.schema.number.optional()',
     },
     leadingComment: 'Variables for Rabbitmq',
