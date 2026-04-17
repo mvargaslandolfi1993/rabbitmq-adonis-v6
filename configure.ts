@@ -30,7 +30,7 @@ export async function configure(command: ConfigureCommand) {
     RABBITMQ_USER: '',
     RABBITMQ_PASSWORD: '',
     RABBITMQ_PORT: '',
-    RABBITMQ_PROTOCOL: 'ampq',
+    RABBITMQ_PROTOCOL: 'amqp',
     RABBITMQ_HEARTBEAT: 60,
   })
 
